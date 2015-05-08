@@ -1,13 +1,13 @@
 package entity;
 
-public class Pop3Account {
+public class POP3Account {
 
   private String username;
   private String password;
   private String serveraddr;
   private int portnumber;
   
-  public Pop3Account(String name, String password, String serveraddr, int portnumber) {
+  public POP3Account(String name, String password, String serveraddr, int portnumber) {
     set_username(name);
     set_password(password);
     set_serveraddr(serveraddr);
@@ -65,7 +65,7 @@ public class Pop3Account {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    Pop3Account other = (Pop3Account) obj;
+    POP3Account other = (POP3Account) obj;
     if (password == null) {
       if (other.password != null)
         return false;
