@@ -3,13 +3,13 @@ package server;
 import java.io.*;
 import java.net.*;
 
-public class MultiServerThread extends Thread {
+public class POP3Handler extends Thread {
 
-  private Socket socket = null;
+  private Socket socket;
   
-  public MultiServerThread(Socket socket) {
-      super("MultiServerThread");
-      this.socket = socket;
+  public POP3Handler(Socket socket) {
+    super();
+    this.socket = socket;
   }
    
   public void run() {
@@ -21,13 +21,12 @@ public class MultiServerThread extends Thread {
       ) {
       String inputLine;
       while ((inputLine = in.readLine()) != null) {
-          out.println(inputLine);
-          System.out.println("whileschleife?");
-          System.out.println(inputLine);
+        out.println(inputLine);
+        System.out.println(inputLine);
       }  
-          socket.close();
+      socket.close();
       } catch (IOException e) {
-          e.printStackTrace();
+        e.printStackTrace();
       }
   }
 }
