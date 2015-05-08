@@ -1,0 +1,48 @@
+* Email-Storage: <server>.<username>.<uid>
+
+|POP3Account
+|--------------------
+| -amountOfEmail: int
+| -uids: List<long>
+| -mailDropSize: int
+| -username: string
+| -password: string
+| -server: string
+| -port: int
+|----------------------
+| + update();  updates private attributes, when new email received
+| + getAmountOfEmails();
+| + getMailDropSize();
+| + getServer();
+| + getPort();
+| + getUsername();
+| + getPassword();
+| + getAllMailUIDS()
+| + getMailUidById(int);
+| + addEmailToDelete(int);
++---------------------
+
+
+| Email mit DAO
+|----------------
+| -sizeInBytes: int     @Getter
+| -uid: int             @Getter, gets uid by UniqueID
+| -content: String      @Getter
++-------
+|
+
+
+|EmailDAO - Files threadsafe?
+|INFO: Email-Storage: <server>.<username>.<uid>
++-----------------------------
+| +load(POP3Account, uid);
+| +store(POP3Account, Email);
+| +getSizes(POP3Account);
+| +delete(POP3Account, uid);
+|
+
+|UniqueID
++------static----
+| - uniqueids: long
++------static----
+| + getUniqueId();
