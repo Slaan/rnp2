@@ -4,7 +4,7 @@
 |--------------------
 | -amountOfEmail: int
 | -uids: List<long>
-| -mailDropSize: int
+| -mailDropsize: int
 | -username: string
 | -password: string
 | -server: string
