@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.naming.directory.InvalidAttributesException;
 
+import emailstorage.IFileHandler;
 import entity.POP3Account;
 
 public class FrontendHandler implements IFrontend {
@@ -14,6 +15,7 @@ public class FrontendHandler implements IFrontend {
   private POP3Account           currentAccount = null;
   private POP3FrontendParser    parser;
   private String                response;
+  private IFileHandler          filehandler = null;
   
   @Override
   public void setAccounts(Set<POP3Account> account) {
@@ -70,14 +72,30 @@ public class FrontendHandler implements IFrontend {
     } catch (InvalidAttributesException e) {
       return false; 
     }
-   }
+  }
   
   private boolean matchnoop(String str) {
     try {
       parser.noop(str);
-      this.response = "+OK NOOB\n";
+      this.response = "+OK NOOP\n";
       return true;
     } catch(InvalidAttributesException e) {
+      return false;
+    }
+  }
+  
+  private boolean matchlist(String str) {
+    try {
+      String numberAsString = parser.list(str);
+      if (numberAsString.equals("")) {
+        // TODO: set all the mails as response
+        this.response = "+OK JOJOJO\n";
+        return true;
+      }
+      int mailnumber = Integer.parseInt(numberAsString);
+      // TODO: set specific mail as response
+      return true;
+    } catch (InvalidAttributesException e) {
       return false;
     }
   }
