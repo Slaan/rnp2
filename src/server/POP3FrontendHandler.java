@@ -3,11 +3,11 @@ package server;
 import java.io.*;
 import java.net.*;
 
-public class POP3Handler extends Thread {
+public class POP3FrontendHandler extends Thread {
 
   private Socket socket;
   
-  public POP3Handler(Socket socket) {
+  public POP3FrontendHandler(Socket socket) {
     super();
     this.socket = socket;
   }

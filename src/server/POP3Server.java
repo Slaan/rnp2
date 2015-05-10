@@ -26,7 +26,7 @@ public class POP3Server {
       while (!done) {
         if (cur_clients.get_number_of_clients()<max_clients) {
           //add param cur_clients to threads
-          POP3Handler newcon = new POP3Handler(serverSocket.accept());
+          POP3FrontendHandler newcon = new POP3FrontendHandler(serverSocket.accept());
           newcon.start();
           cur_clients.increase_clientnumber();;
         }
