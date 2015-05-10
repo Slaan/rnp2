@@ -1,4 +1,4 @@
-package Frontend;
+package frontend;
 
 import javax.naming.directory.InvalidAttributesException;
 

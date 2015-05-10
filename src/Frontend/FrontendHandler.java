@@ -1,11 +1,11 @@
-package Frontend;
+package frontend;
 
 import java.util.Set;
 
 import javax.naming.directory.InvalidAttributesException;
 
-import emailstorage.IFileHandler;
-import entity.POP3Account;
+import persistenceComponent.IPersistenceService;
+import pop3AccountComponent.POP3Account;
 
 public class FrontendHandler implements IFrontend {
 
@@ -15,7 +15,7 @@ public class FrontendHandler implements IFrontend {
   private POP3Account           currentAccount = null;
   private POP3FrontendParser    parser;
   private String                response;
-  private IFileHandler          filehandler = null;
+  private IPersistenceService          filehandler = null;
   
   @Override
   public void setAccounts(Set<POP3Account> account) {

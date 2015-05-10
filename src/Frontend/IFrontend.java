@@ -1,8 +1,8 @@
-package Frontend;
+package frontend;
 
 import java.util.Set;
 
-import entity.POP3Account;
+import pop3AccountComponent.POP3Account;
 
 public interface IFrontend {
 

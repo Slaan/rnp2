@@ -8,7 +8,7 @@ import javax.naming.directory.InvalidAttributesException;
 
 import org.junit.Test;
 
-import Frontend.POP3FrontendParser;
+import frontend.POP3FrontendParser;
 
 public class TestPOP3FrontendParser {
 
