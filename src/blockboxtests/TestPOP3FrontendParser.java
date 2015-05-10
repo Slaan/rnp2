@@ -1,4 +1,4 @@
-package unittests;
+package blockboxtests;
 
 import static org.junit.Assert.*;
 

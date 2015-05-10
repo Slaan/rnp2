@@ -1,6 +1,5 @@
 package entity;
 
-import java.util.List;
 
 public class POP3Account implements IPOP3Account {
 

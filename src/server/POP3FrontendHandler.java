@@ -13,12 +13,9 @@ public class POP3FrontendHandler extends Thread {
   }
    
   public void run() {
-    try (
-      PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-      BufferedReader in = new BufferedReader(
-      new InputStreamReader(
-        socket.getInputStream()));
-      ) {
+    try {
+      PrintWriter    out = new PrintWriter(socket.getOutputStream(), true);
+      BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       String inputLine;
       while ((inputLine = in.readLine()) != null) {
         out.println(inputLine);
