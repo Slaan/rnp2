@@ -1,4 +1,4 @@
-package blockboxtests;
+package blackboxtests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -30,7 +30,7 @@ public class TestPersistenceService {
   @Before
   public void initialize() {
     account = new POP3Account("hans", "hi", "0.0.0.0", 1337);
-    mail1 = new EmailTyp("hallo dies ist ein test löäü", "123", 85);
+    mail1 = new EmailTyp("hallo dies ist ein test l???", "123", 85);
     persi = new PersistenceService();
     mail2 = new EmailTyp("test1", "131", 15);
     delmail = new EmailTyp("to delete", "151", 24);

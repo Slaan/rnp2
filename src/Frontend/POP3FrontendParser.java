@@ -1,4 +1,4 @@
-package frontend;
+package Frontend;
 
 import javax.naming.directory.InvalidAttributesException;
 
@@ -31,15 +31,10 @@ public class POP3FrontendParser {
   
   public String handleWithSecondWord(String cmd, String rawStr) throws InvalidAttributesException {
     if (rawStr.matches(cmd + "(\\s(\\d)+)+")) {
-      try {
         String substring = getSecondWord(rawStr);
         // ensure parsed string is integer
         Integer.parseInt(substring);
         return substring;
-      } catch (NumberFormatException e) {
-        // couldn't cast string to number
-        throw new InvalidAttributesException();
-      }
     }
     throw new InvalidAttributesException();
   }

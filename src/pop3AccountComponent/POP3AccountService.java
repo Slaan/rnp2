@@ -19,14 +19,12 @@ public class POP3AccountService implements IPOP3AccountService {
 
   @Override
   public boolean addPOP3Account(IPOP3Account account) {
-    pop3accounts.add(account);
-    return true;
+    return pop3accounts.add(account);
   }
 
   @Override
   public boolean deletePOP3Account(IPOP3Account account) {
-    pop3accounts.remove(account);
-    return true;
+    return pop3accounts.remove(account);
   }
   
 }

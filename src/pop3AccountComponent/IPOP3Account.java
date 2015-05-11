@@ -18,13 +18,15 @@ public interface IPOP3Account {
   
   public int getPort();
   
-  public void update();
+  public void handleQuit();
+  
+  public void handleRset();
   
   public void addEmail(EmailTyp email);
   
   public List<String> getAllMailUIDS();
   
-  public long getMailUidByID(int id);
+  public String getMailUidByID(int id);
   
   public void addEmailToDelete(int id); 
 }

@@ -26,6 +26,5 @@ public class NumberOfActiveClientsHandler {
   
   public void set_max_number_of_clients(int i) {
     this.max_number_of_clients = i;
-    System.out.println(""+i);
   }
 }

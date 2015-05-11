@@ -58,21 +58,19 @@ public class POP3Account implements IPOP3Account {
   }
 
   @Override
-  public void update() {
+  public void handleQuit() {
     // TODO Auto-generated method stub
     
   }
 
   @Override
   public List<String> getAllMailUIDS() {
-    // TODO Auto-generated method stub
     return uids;
   }
 
   @Override
-  public long getMailUidByID(int id) {
-    // TODO Auto-generated method stub
-    return 0;
+  public String getMailUidByID(int id) {
+    return this.uids.get(id-1);
   }
 
   @Override
@@ -85,7 +83,13 @@ public class POP3Account implements IPOP3Account {
   public void addEmail(EmailTyp email) {
     this.amountofEmail++;
     this.getAllMailUIDS().add(email.get_uid());
-    this.mailDropsize+=email.get_bytesize();
+    this.mailDropsize += email.get_bytesize();
+  }
+
+  @Override
+  public void handleRset() {
+    // TODO Auto-generated method stub
+    
   }
 
 }

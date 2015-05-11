@@ -2,6 +2,7 @@ package server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.util.concurrent.Semaphore;
 
 import persistenceComponent.IPersistenceService;
 import persistenceComponent.PersistenceService;
@@ -9,6 +10,7 @@ import pop3AccountComponent.IPOP3Account;
 import pop3AccountComponent.IPOP3AccountService;
 import pop3AccountComponent.POP3Account;
 import pop3AccountComponent.POP3AccountService;
+import Frontend.FrontendComponent;
 import backend.POP3Backend;
 import entity.NumberOfActiveClientsHandler;
 import gui.MainWindow;
@@ -24,23 +26,27 @@ public class POP3Server {
       System.err.println("Usage: java EchoServer <port number>");
       System.exit(1);
     }
-    NumberOfActiveClientsHandler cur_clients = new NumberOfActiveClientsHandler();
+    NumberOfActiveClientsHandler curClients = new NumberOfActiveClientsHandler();
     int portNumber = Integer.parseInt(args[0]);
     System.out.println("Start server on port: " + portNumber);
     IPOP3AccountService accountService = new POP3AccountService();
     IPersistenceService persistenceService = new PersistenceService();
     POP3Backend backend = new POP3Backend(accountService, persistenceService);
-    MainWindow mainwindow = new MainWindow(backend, accountService, cur_clients);
+    MainWindow mainwindow = new MainWindow(backend, accountService, curClients);
     backend.start();
     try {
       ServerSocket serverSocket = new ServerSocket(portNumber);
       boolean done = false;
       while (!done) {
-        if (!cur_clients.max_clients_reached()) {
+        if (!curClients.max_clients_reached()) {
           //TODO add param cur_clients to threads
-          POP3FrontendHandler newcon = new POP3FrontendHandler(serverSocket.accept());
+          POP3FrontendHandler newcon;
+          curClients.increase_clientnumber();
+          newcon = new POP3FrontendHandler(serverSocket.accept(),
+              curClients,
+              accountService, 
+              persistenceService);
           newcon.start();
-          cur_clients.increase_clientnumber();;
         }
       }
       System.out.println("Ende");

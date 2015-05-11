@@ -25,7 +25,7 @@ public class MainWindowUI {
     container = mainframe.getContentPane();
     stopButton = new JButton("Stop");
     saveButton = new JButton("Save");
-    accountButton = new JButton("Click");
+    accountButton = new JButton("add User");
     timeLabel = new JLabel("Time in Sec");
     timeTextField = new JTextField(50);
     clientLabel = new JLabel("Max Clienits");

@@ -1,14 +1,13 @@
-package blockboxtests;
+package blackboxtests;
 
-import static org.junit.Assert.*;
-
-import java.util.UUID;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import javax.naming.directory.InvalidAttributesException;
 
 import org.junit.Test;
 
-import frontend.POP3FrontendParser;
+import Frontend.POP3FrontendParser;
 
 public class TestPOP3FrontendParser {
 
